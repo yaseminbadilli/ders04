@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Container, Row, Col } from 'reactstrap'
+import Nav from './Nav.js';
+import Categories from "./Categories.js";
+import Products from "./Products.js";
+import Menü from "./Menü.js";
+import Footer from "./Footer.js";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+    render() {
+        let infoMenü = { menü1: "ANASAYFA", menü2: "HAKKIMIZDA", menü3: "İLETİŞİM" };
+        let infoFooter = { info1: "YASEMİN", info2: "SANLIURFA" };
+        let infoCategories = { title: "ÜRÜNLER" }
+        let infoProducts = { title: "KOVALAR" }
+
+        return (
+
+
+
+            <div className="App">
+
+                <Container>
+                    <Row>
+                        <Menü info={infoMenü} />
+                    </Row>
+                    <Row>
+                        <Footer info={infoFooter} />
+                    </Row>
+
+                    <Row>
+                        <Nav />
+                    </Row>
+
+                    <Row>
+
+                        <Col xs="4">
+                            <Categories info={infoCategories} />
+
+                        </Col>
+
+                        <Col xs="8">
+                            <Products info={infoProducts} />
+
+                        </Col>
+
+                    </Row>
+
+
+
+
+
+
+
+                </Container>
+
+            </div>
+        )
+    }
 }
-
 export default App;
