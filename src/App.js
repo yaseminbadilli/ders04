@@ -24,10 +24,7 @@ class App extends React.Component {
                     <Row>
                         <Menü info={infoMenü} />
                     </Row>
-                    <Row>
-                        <Footer info={infoFooter} />
-                    </Row>
-
+                   
                     <Row>
                         <Nav />
                     </Row>
@@ -46,6 +43,9 @@ class App extends React.Component {
 
                     </Row>
 
+                    <Row>
+                        <Footer info={infoFooter} />
+                    </Row>
 
 
 

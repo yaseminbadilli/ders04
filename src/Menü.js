@@ -1,6 +1,11 @@
 import React from "react";
+import './Menü.css'
 
 import { Nav, NavLink, NavItem } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
+
 
 class Menü extends React.Component {
 
@@ -12,25 +17,16 @@ class Menü extends React.Component {
 
         return (
 
-            <Nav>
-                <NavItem>
-                    <NavLink>
-                        {this.props.info.menü1}
-                    </NavLink>
-                </NavItem>
 
-                <NavItem>
-                    <NavLink>
-                        {this.props.info.menü2}
-                    </NavLink>
-                </NavItem>
 
-                <NavItem>
-                    <NavLink>
-                        {this.props.info.menü3}
-                    </NavLink>
-                </NavItem>
-            </Nav>
+
+            <div class="topnav">
+                <a href="#anasayfa">{this.props.info.menü1}</a>
+                <a href="#hakkımızda">{this.props.info.menü2}</a>
+                <a href="#iletişim">{this.props.info.menü3}</a>
+            </div>
+
+
 
 
 

@@ -1,4 +1,5 @@
 import React from "react";
+import './Categories.css'
 import { ListGroup, ListGroupItem } from 'reactstrap'
 
 
@@ -13,39 +14,37 @@ class Categories extends React.Component {
         super(probs);
         this.state = {
             Categories: [
-
-                { categoryId: 1, categoryName: "kovalar" },
-                { categoryId: 2, categoryName: "tek tavuk" },
-                { categoryId: 3, categoryName: "salata" },
-                { categoryId: 4, categoryName: "sandiviç" },
-
-
-
-
-
-
             ],
 
 
         }
 
     }
+    
+    componentDidMount() {
+        this.getCategories();
+    }
+
+
+    getCategories = () => {
+        fetch("http://localhost:3000/categories")
+            .then(response=> response.json())
+            .then(data=> this.setState({Categories:data}));
+    }
+
     render() {
 
-        return (<div>
+        return (<div class="vertical-menu">
+            
+            <a href="baslik" class="active">{this.props.info.title}</a>
 
-            <h2>{this.props.info.title}</h2>
-
-            <ListGroup>
-
-                {this.state.Categories.map((category) => (
+            <a href="menüler">{this.state.Categories.map((category) => (
                     <ListGroupItem key={category.categoryId}>
                         {category.categoryName}
                     </ListGroupItem>
-                ))}
+                ))}</a>
 
-
-            </ListGroup>
+            
 
         </div>
 

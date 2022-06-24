@@ -1,37 +1,49 @@
 import React from "react";
 import { ListGroup, ListGroupItem, Card, CardImg } from 'reactstrap'
-
+import './Categories.css'
 
 class Products extends React.Component {
     constructor(probs) {
         super(probs);
         this.state = {
+
+           Products : [
+
+            ],
+            
             counter: 1
         }
     }
 
+    componentDidMount() {
+        this.getProducts();
+    }
+
+
+    getProducts = () => {
+        fetch("http://localhost:3000/products")
+            .then(response=> response.json())
+            .then(data=> this.setState({Products:data}));
+    }
+
     render() {
 
-        return (<div>
+        return (<div class="vertical-menu">
+         <a href="#" class="active">{this.props.info.title}</a>
+         
 
-            <h2>{this.props.info.title}</h2>
             <h3>Ziyaretçi: {this.state.counter}</h3>
 
+            
 
-            <ListGroup>
-                <ListGroupItem>tekli kova</ListGroupItem>
-                <Card>
-                    <CardImg src="https://www.pngitem.com/pimgs/m/73-732653_transparent-popeyes-png-chicken-bucket-popeyes-png-png.png"></CardImg>
-                </Card>
-                <ListGroupItem>ikili kova</ListGroupItem>
-                <Card>
-                    <CardImg src="https://www.pngitem.com/pimgs/m/73-732653_transparent-popeyes-png-chicken-bucket-popeyes-png-png.png"></CardImg>
-                </Card>
-                <ListGroupItem>üçlü kova</ListGroupItem>
-                <Card>
-                    <CardImg src="https://www.pngitem.com/pimgs/m/73-732653_transparent-popeyes-png-chicken-bucket-popeyes-png-png.png"></CardImg>
-                </Card>
-            </ListGroup>
+            <a href="menüler">{this.state.Products.map((product) => (
+                    <ListGroupItem key={product.productId}>
+                        {product.productName}
+                        <Card>
+                            <CardImg src ={product.productImage}></CardImg>
+                        </Card>
+                    </ListGroupItem>
+                ))}</a>
 
 
 
